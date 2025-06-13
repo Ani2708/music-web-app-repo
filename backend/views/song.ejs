@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= song.title %> - Music Platform</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <div class="song-page">
+    <header class="song-header">
+      <h1 class="song-title"><%= song.title %></h1>
+      
+      <div class="song-meta">
+        <div class="song-meta-item">
+          <strong>Artist:</strong>
+          <a href="/artist/<%= song.artist_id %>"><%= song.artist_name %></a>
+        </div>
+        
+        <% if (song.album_name) { %>
+          <div class="song-meta-item">
+            <strong>Album:</strong>
+            <span><%= song.album_name %></span>
+          </div>
+        <% } %>
+        
+        <div class="song-meta-item">
+          <strong>Genre:</strong>
+          <span><%= song.genre_name %></span>
+        </div>
+        
+        <div class="song-meta-item">
+          <strong>Uploaded by:</strong>
+          <span><%= song.username %></span>
+        </div>
+        
+      </div>
+    </header>
+      
+
+    <div class="audio-player-container">
+      <audio controls class="audio-player">
+        <source src="/uploads/<%= song.filename %>" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="time-display">
+        <span>0:00</span>
+        <span><%= song.duration %></span>
+      </div>
+    </div>
+    <% if (isOwner) { %>
+      <div class="delete-container">
+        <form action="/song/<%= song.song_id %>/delete" method="POST" class="delete-form">
+        <button type="submit" class="delete-btn" 
+            onclick="return confirm('Delete this song permanently?')">
+          Delete Song
+        </button>
+        </form>
+      </div>
+      <% } %>
+
+    <h2 class="comments-header">Comments</h2>
+    
+    <% if (comments.length > 0) { %>
+      <% comments.forEach(comment => { %>
+        <div class="comment">
+          <div class="comment-header">
+            <span class="comment-user"><%= comment.username %></span>
+            <span class="comment-time"><%= formatDate(comment.timestamp) %></span>
+          </div>
+          <p class="comment-content"><%= comment.content %></p>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p style="color: var(--medium-gray); text-align: center;">No comments yet.</p>
+    <% } %>
+
+    <div class="comment-form">
+      <h3>Add a comment</h3>
+      <form action="/song/<%= song.song_id %>/comment" method="POST">
+        <textarea name="content" placeholder="Share your thoughts..." required></textarea>
+        <button type="submit">Post Comment</button>
+      </form>
+    </div>
+
+    <a href="/" class="back-link">← Back to all songs</a>
+  </div>
+</body>
+</html>

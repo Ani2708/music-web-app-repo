@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload a Song</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>Upload a New Song</h1>
+  </header>
+
+  <main>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <label for="title">Song Title:</label>
+      <input type="text" id="title" name="title" required>
+
+      <label for="audio">Audio File (.mp3):</label>
+      <input type="file" id="audio" name="audio" accept=".mp3" required>
+
+      <label for="user_id">Uploaded By (User ID):</label>
+      <input type="text" id="user_id" name="user_id" required>
+
+      <label for="album_id">Album ID (optional):</label>
+      <input type="text" id="album_id" name="album_id">
+
+      <label for="genre_id">Genre ID:</label>
+      <input type="text" id="genre_id" name="genre_id" required>
+
+      <input type="submit" value="Upload Song">
+    </form>
+
+    <p><a href="/">← Back to Home</a></p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= playlist.playlist_name %> - Songs</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1><%= playlist.playlist_name %></h1>
+    <p>Created by <%= playlist.username %></p>
+  </header>
+  <main>
+    <% if (songs.length === 0) { %>
+      <p>No songs in this playlist yet.</p>
+    <% } else { %>
+      <ul>
+        <% songs.forEach(song => { %>
+          <li><a href="/song/<%= song.song_id %>"><%= song.title %> by <%= song.artist_name %></a></li>
+        <% }) %>
+      </ul>
+    <% } %>
+    <p><a href="/playlists">← Back to Playlists</a></p>
+  </main>
+</body>
+</html>

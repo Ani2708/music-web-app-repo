@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Music Platform</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>Discover Music</h1>
+    <p class="subtitle">Latest uploads from our community</p>
+  </header>
+  
+
+  <main class="song-grid">
+    <% songs.forEach(song => { %>
+      <div class="song-card">
+        <div class="card-header">
+          <div class="album-art">
+            <!-- Placeholder for album art -->
+            <span><%= song.title.charAt(0) %></span>
+          </div>
+          <div class="song-info">
+            <h2><a href="/song/<%= song.song_id %>"><%= song.title %></a></h2>
+            <p class="artist"><%= song.artist_name %></p>
+            <% if (song.album_name) { %>
+              <p class="album">From <em><%= song.album_name %></em></p>
+            <% } %>
+          </div>  
+        </div>
+        
+        <div class="card-footer">
+          <span class="genre-tag"><%= song.genre_name %></span>
+          <span class="upload-date"><%= formatDate(song.upload_date) %></span>
+        </div>
+        
+        <% if (song.comments.length > 0) { %>
+          <div class="recent-comment">
+            <p class="comment-preview">
+              "<%= song.comments[0].content.length > 50 ? 
+                song.comments[0].content.substring(0, 50) + '...' : 
+                song.comments[0].content %>"
+            </p>
+            <p class="comment-author">— <%= song.comments[0].username %></p>
+          </div>
+        <% } %>
+      </div>
+    <% }) %>
+  </main>
+  <div class="playlist-cta">
+    <div class="cta-content">
+      <h2>Explore Curated Playlists</h2>
+      <p>Discover music collections created by our community</p>
+      <a href="/playlists" class="cta-button">Browse All Playlists</a>
+    </div>
+  </div>
+  <footer>
+    <p>© 2023 Music Platform</p>
+  </footer>
+</body>
+</html>

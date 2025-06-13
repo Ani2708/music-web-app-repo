@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Playlists</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>All Playlists</h1>
+  </header>
+  <main>
+    <ul>
+      <% playlists.forEach(pl => { %>
+        <li>
+          <a href="/playlists/<%= pl.user_id %>/<%= encodeURIComponent(pl.playlist_name) %>">
+          <strong><%= pl.playlist_name %></strong>
+          </a><br>
+          Created by <%= pl.username %> on <%= new Date(pl.creation_date).toLocaleDateString() %>
+        </li>
+      <% }) %>
+    </ul>
+    <p><a href="/">← Back to Home</a></p>
+  </main>
+</body>
+</html>

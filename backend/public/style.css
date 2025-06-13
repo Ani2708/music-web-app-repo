@@ -1,0 +1,538 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --deep-black: #0a0a0a;
+  --dark-black: #121212;
+  --card-black: #1a1a1a;
+  --electric-blue: #3a86ff;
+  --violet-purple: #8338ec;
+  --soft-purple: #a855f7;
+  --white: #ffffff;
+  --light-gray: #b3b3b3;
+  --medium-gray: #777777;
+  --dark-gray: #444444;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--deep-black);
+  color: var(--white);
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: var(--dark-black);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--violet-purple);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--electric-blue);
+  text-shadow: 0 0 8px rgba(58, 134, 255, 0.3);
+}
+
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+form {
+  background-color: var(--card-black);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--dark-gray);
+}
+
+form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: var(--electric-blue);
+}
+
+form input[type="text"],
+form input[type="file"],
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid var(--dark-gray);
+  background-color: var(--dark-black);
+  color: var(--white);
+}
+
+form input[type="submit"],
+button {
+  margin-top: 1.5rem;
+  background-color: var(--violet-purple);
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+form input[type="submit"]:hover,
+button:hover {
+  background-color: var(--soft-purple);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(131, 56, 236, 0.3);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: var(--card-black);
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  border-left: 3px solid var(--electric-blue);
+}
+
+li:hover {
+  background-color: #222222;
+  transform: translateX(4px);
+}
+
+a {
+  color: var(--electric-blue);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--soft-purple);
+  text-decoration: underline;
+}
+
+audio {
+  width: 100%;
+  margin-top: 1rem;
+  background-color: var(--dark-black);
+  border-radius: 6px;
+}
+
+p a {
+  display: inline-block;
+  margin-top: 2rem;
+  color: var(--light-gray);
+}
+
+p a:hover {
+  color: var(--electric-blue);
+}
+
+.comments-section {
+  margin-top: 20px;
+  background-color: var(--dark-black);
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid var(--dark-gray);
+}
+
+.comment-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.comment-list li {
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--dark-gray);
+  padding-bottom: 5px;
+  border-left: none;
+}
+
+.timestamp {
+  color: var(--medium-gray);
+  font-size: 0.85em;
+  margin-left: 10px;
+}
+
+/* Home Page Specific Styles */
+header .subtitle {
+  color: var(--light-gray);
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.song-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.song-card {
+  background-color: var(--card-black);
+  border-radius: 12px;
+  padding: 1.2rem;
+  transition: all 0.3s ease;
+  border: 1px solid var(--dark-gray);
+}
+
+.song-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+  border-color: var(--electric-blue);
+}
+
+.card-header {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.album-art {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--electric-blue) 0%, var(--violet-purple) 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.album-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.song-info h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.song-info h2 a {
+  color: var(--white);
+}
+
+.song-info h2 a:hover {
+  color: var(--electric-blue);
+}
+
+.artist {
+  color: var(--light-gray);
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}
+
+.album {
+  color: var(--medium-gray);
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--dark-gray);
+}
+
+.genre-tag {
+  background-color: var(--violet-purple);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.upload-date {
+  color: var(--medium-gray);
+  font-size: 0.85rem;
+}
+
+.recent-comment {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  background-color: var(--dark-black);
+  border-radius: 8px;
+  border-left: 3px solid var(--electric-blue);
+}
+
+.comment-preview {
+  margin: 0;
+  color: var(--light-gray);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.comment-author {
+  margin: 0.3rem 0 0;
+  color: var(--medium-gray);
+  font-size: 0.8rem;
+  text-align: right;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--medium-gray);
+  margin-top: 2rem;
+  border-top: 1px solid var(--dark-gray);
+}
+
+.playlist-cta {
+  background-color: #282828;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  text-align: center;
+  border-left: 4px solid var(--violet-purple);
+}
+
+.cta-content h2 {
+  color: #fff;
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.cta-content p {
+  color: #b3b3b3;
+  margin-bottom: 1.5rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color:var(--electric-blue);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.cta-button:hover {
+  background-color: transparent;
+  color: var(--electric-blue);
+  border-color: var(--violet-purple);
+  transform: translateY(-2px);
+}
+
+.song-page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.song-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.song-title {
+  font-size: 2.5rem;
+  color: var(--electric-blue);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 12px rgba(58, 134, 255, 0.3);
+}
+
+.song-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1rem 0;
+}
+
+.song-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--light-gray);
+}
+
+.song-meta-item strong {
+  color: var(--electric-blue);
+}
+
+.song-meta-item a {
+  color: var(--light-gray);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.song-meta-item a:hover {
+  color: var(--electric-blue);
+  text-decoration: underline;
+}
+
+.audio-player-container {
+  background-color: var(--card-black);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 2rem 0;
+  border: 1px solid var(--violet-purple);
+  box-shadow: 0 4px 15px rgba(131, 56, 236, 0.1);
+}
+
+.audio-player {
+  width: 100%;
+  background-color: var(--dark-black);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.time-display {
+  display: flex;
+  justify-content: space-between;
+  color: var(--medium-gray);
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.comments-header {
+  font-size: 1.5rem;
+  color: var(--electric-blue);
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--violet-purple);
+}
+
+.comment-form {
+  background-color: var(--card-black);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+.comment-form textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 1rem;
+  background-color: var(--dark-black);
+  border: 1px solid var(--dark-gray);
+  border-radius: 8px;
+  color: var(--white);
+  font-family: inherit;
+  resize: vertical;
+}
+
+.comment-form button {
+  background-color: var(--violet-purple);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 1rem;
+}
+
+.comment-form button:hover {
+  background-color: var(--soft-purple);
+  transform: translateY(-2px);
+}
+
+.comment {
+  background-color: var(--card-black);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--electric-blue);
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.comment-user {
+  color: var(--electric-blue);
+  font-weight: bold;
+}
+
+.comment-time {
+  color: var(--medium-gray);
+  font-size: 0.85rem;
+}
+
+.comment-content {
+  color: var(--light-gray);
+  line-height: 1.6;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 2rem;
+  color: var(--light-gray);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-size: 1rem;
+}
+
+.back-link:hover {
+  color: var(--electric-blue);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .song-page {
+    padding: 1rem;
+  }
+  
+  .song-title {
+    font-size: 2rem;
+  }
+  
+  .song-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+}
+.delete-container {
+  margin: 1.5rem 0 0;
+  text-align: center;
+}
+
+.delete-btn {
+  background: transparent;
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.delete-btn:hover {
+  background: rgba(255, 107, 107, 0.1);
+}
+
+
